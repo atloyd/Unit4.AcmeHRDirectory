@@ -89,6 +89,12 @@ app.delete('/api/employees/:id', async (req, res, next) => {
 	}
 });
 
+//error
+
+app.use((err, req, res, next) => {
+	res.status(500).json({ error: err.message });
+});
+
 const init = async () => {
 	await client.connect();
 	console.log('DB Connected');
